@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sandwichbot_description</name>
+  <version>0.0.1</version>
+  <description>Sandwichbot model files</description>
+
+  <maintainer email="clint@clintonliddick.com">Clint Liddick</maintainer>
+
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+
+  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+  <!-- Optional attribute type can be: website, bugtracker, or repository -->
+  <!-- <url type="website">http://wiki.ros.org/sandwichbot_description</url> -->
+
+  <author email="clint@clintonliddick.com">Clint Liddick</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depends>xacro</depends>
+  <depends>ada_description</depends>
+
+</package>

@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<robot
+    xmlns:xacro="http://www.ros.org/wiki/xacro"
+    name="sandwichbot">
+
+  <material name="metal">
+    <color rgba="0.86 0.86 0.86 0.5" />
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.25" />
+      <geometry>
+        <box size="0.5 0.2 0.5" />
+      </geometry>
+    </visual>
+  </link>
+  
+
+  <link name="workbench">
+    <visual>
+      <geometry>
+        <box size="2 0.5 0.5" />
+      </geometry>
+      <material name="metal" />
+    </visual>
+  </link>
+
+  <joint name="workbench" type="fixed">
+    <parent link="base_link" />
+    <child link="workbench" />
+    <origin xyz="0 0.35 0.25" />
+  </joint>
+
+
+  <link name="counter">
+    <visual>
+      <geometry>
+        <box size="0.8 0.5 0.2" />
+      </geometry>
+      <material name="">
+        <color rgba="0.87058 0.81777 0.52941 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="counter" type="fixed">
+    <parent link="workbench" />
+    <child link="counter" />
+    <origin xyz="0 0 0.35" />
+  </joint>
+
+
+  <link name="bin1">
+    <visual>
+      <geometry>
+        <box size="0.3 0.2 0.2" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0.8 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="bin2">
+    <visual>
+      <geometry>
+        <box size="0.3 0.2 0.2" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0.8 0 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="bin3">
+    <visual>
+      <geometry>
+        <box size="0.3 0.2 0.2" />
+      </geometry>
+      <material name="">
+        <color rgba="0.8 0 0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="bin1" type="fixed">
+    <parent link="workbench" />
+    <child link="bin1" />
+    <origin xyz="-0.85 0.15 0.35" />
+  </joint>
+  <joint name="bin2" type="fixed">
+    <parent link="workbench" />
+    <child link="bin2" />
+    <origin xyz="-0.55 0.15 0.35" />
+  </joint>
+  <joint name="bin3" type="fixed">
+    <parent link="workbench" />
+    <child link="bin3" />
+    <origin xyz="-0.55 -0.15 0.35" />
+  </joint>
+
+  <material name="black">
+    <color rgba="1 1 1 1" />
+  </material>
+
+  <link name="grill_base">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.1" />
+      </geometry>
+      <material name="black" />
+    </visual>
+  </link>
+  <link name="grill_lid">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.05" />
+      </geometry>
+      <material name="black" />
+    </visual>
+  </link>
+  <link name="grill_handle">
+    <visual>
+      <geometry>
+        <cylinder length="0.2" radius="0.015" />
+      </geometry>
+      <material name="black" />
+    </visual>
+  </link>
+
+  <joint name="grill_base" type="fixed">
+    <parent link="workbench" />
+    <child link="grill_base" />
+    <origin xyz="0.7 0 0.3" />
+  </joint>
+  <joint name="grill_lid" type="fixed">
+    <parent link="grill_base" />
+    <child link="grill_lid" />
+    <origin xyz="0 0.1 0.15" rpy="1.5707963267949 0 0" />
+  </joint>
+  <joint name="grill_handle" type="fixed">
+    <parent link="grill_lid" />
+    <child link="grill_handle" />
+    <origin xyz="0 0.15 0" rpy="0 1.5707963267949 0" />
+  </joint>
+
+
+  <xacro:include filename="$(find ada_description)/robots/mico.urdf" />
+</robot>
